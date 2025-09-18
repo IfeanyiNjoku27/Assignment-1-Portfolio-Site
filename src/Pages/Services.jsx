@@ -1,5 +1,5 @@
 //imports
-import "./Pages_CSS/Services.CSS"
+import "./Pages_CSS/Services.css"
 
 export default function Services() {
   {
