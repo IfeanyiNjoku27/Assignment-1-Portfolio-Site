@@ -15,7 +15,7 @@ export default function About() {
 
       {/* Resume Download */}
       <a
-        href="/src/assets/ResumePDF/Ifeanyi-Njoku-2.pdf"
+        href="public/Ifeanyi-Njoku-2.pdf"
         target="_blank"
         rel="noreferrer noopener"
       >

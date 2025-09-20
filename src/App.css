@@ -5,3 +5,25 @@ body {
     font-family: Sans-Serif;
     text-align: center;
 }
+
+.logo {
+  /* height: 6em;
+  padding: 1.5em; */
+  will-change: filter;
+  transition: filter 300ms;
+
+  width: 40px;
+  height: auto;
+  margin-right: 1rem;
+}
+
+.logo:hover {
+  filter: drop-shadow(0 0 0.5em #030ff4aa);
+}
+
+.logo.react:hover {
+  filter: drop-shadow(0 0 0.5em #61dafbaa);
+}
+.navbar:hover {
+filter: drop-shadow(0 0 0.3em lightblue);
+}
