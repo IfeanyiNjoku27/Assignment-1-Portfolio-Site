@@ -1,0 +1,81 @@
+/* Overall container */
+.homePageDiv {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 40px 20px;
+  background: linear-gradient(135deg, #4a4c51, #8a8c91); 
+  color: #f5f5f5; 
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-align: center;
+  gap: 2rem;
+}
+
+/* Header (welcome message) */
+.header h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+}
+
+.header p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  max-width: 600px;
+  margin: 0 auto;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+}
+
+/* Mission Statement Section */
+.missionStatement {
+  background-color: rgba(255, 255, 255, 0.1); 
+  padding: 2rem 1.5rem;
+  border-radius: 12px;
+  max-width: 700px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.missionStatement h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+
+.missionStatement p {
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+/* Button styling */
+.homePageDiv button {
+  margin-top: 2rem;
+  padding: 0.75rem 1.5rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+  transition: all 0.2s ease-in-out;
+}
+
+.homePageDiv button:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 10px rgba(0,0,0,0.25);
+}
+
+/* Make page Reponsive */
+@media (max-width: 600px) {
+  .header h1 {
+    font-size: 2.2rem;
+  }
+
+  .missionStatement {
+    padding: 1.5rem 1rem;
+  }
+}

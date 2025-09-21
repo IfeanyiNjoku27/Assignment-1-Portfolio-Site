@@ -1,10 +1,16 @@
+import about_me from "../assets/about_me.jpg"
+import "./Pages_CSS/About.css"
+
+
 export default function About() {
   return (
     <div className="about-me-container">
       {/* Page Title */}
       <h1>About Me</h1>
 
-      {/* Profile Image (Will be added Later) */}
+      {/* Profile Image */}
+
+      <img src={about_me} alt="Head and shoulder picture of me" className="selfie"/>
 
       {/* About me Paragraph */}
       <p>
@@ -13,7 +19,7 @@ export default function About() {
         development, DevOps, game development and solving real-world problems through code.
       </p>
 
-      {/* Resume Download */}
+      {/* Resume Link To View */}
       <a
         href="public/Ifeanyi-Njoku-2.pdf"
         target="_blank"
