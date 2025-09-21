@@ -1,5 +1,6 @@
 import { Navigate, useNavigate } from "react-router-dom";
 import AppRoutes from "../AppRoutes";
+import "./Pages_CSS/Home.css"
 
 export default function Home() {
   let navigate = useNavigate();
@@ -11,7 +12,7 @@ export default function Home() {
       <header className="header">
         <h1>Welcome to my Home Page</h1>
         <p>
-          My name is [insert name]! I am a software engineering student at
+          My name is Ifeanyi Njoku! I am a software engineering student at
           Centennial College and I enjoy learning and building software
           applications.
         </p>
