@@ -4,6 +4,7 @@ import service_web from "../assets/service_web.jpg";
 import service_mobile from "../assets/service_mobile.jpg";
 import devops from "../assets/devops.jpg";
 
+
 export default function Services() {
   {
     /* List of services */
