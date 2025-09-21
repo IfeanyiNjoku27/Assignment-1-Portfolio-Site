@@ -1,5 +1,5 @@
 //imports
-import "./Pages_CSS/Services.CSS";
+import "./Pages_CSS/Services.css";
 import service_web from "../assets/service_web.jpg";
 import service_mobile from "../assets/service_mobile.jpg";
 import devops from "../assets/devops.jpg";
