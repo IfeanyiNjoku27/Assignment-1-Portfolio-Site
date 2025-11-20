@@ -1,50 +1,64 @@
-import "./Pages_CSS/Projects.css"
-import reltortWeb from "../assets/realtor_webpage.jpg"
-import mobileToDoList from "../assets/mobile_todo_list.jpg"
-import vrPage from "../assets/vr_page.jpg"
+import { useState, useEffect } from "react"
+import { useNavigate } from "react-router-dom"
+import api from "../services/api"
+import './Pages_CSS/Projects.css';
 
 export default function Projects() {
-  {
-    /* List of projects */
-  }
-  const projects = [
-    {
-      id: 1,
-      projectName: "Diggs Realty Webpage",
-      image: reltortWeb,
-      description: "Created a realtor webpage in my spare time. This project was just me redoing a similar project from my first semester.",
-    },
-    {
-        id: 2,
-        projectName: "Andriod Todo List",
-        image: mobileToDoList,
-        description: "I made a simple ToDo list in android Studio. I didn't enhance it or make it complicated but I simply wanted to refresh my memery on kotlin and jetpackcompose so I made something simple."
-    },
-    {
-        id: 3,
-        projectName: "Experience VR Webpage",
-        image: vrPage,
-        description: "A small web project with dummy information using simple HTML, CSS and JavaScript to experiment with layout and design.",
 
+  const [projects, setProjects] = useState([]);
+  const navigate = useNavigate();
+
+  // Fetch all projects
+  useEffect(() => {
+    const fetchProjects = async () => {
+      try {
+        const response = await api.get('/projects');
+        setProjects(response.data);
+      } catch (error) {
+        console.error("Failed to fetch projects", error);
+      }
+    };
+    fetchProjects();
+  }, []);
+
+  // Delete/remove a project
+  const handleDelete = async (id) => {
+    if (window.confirm("Are you sure you want to delete this project?")) {
+      
+      try {
+        await api.delete(`/projects/${id}`);
+        setProjects(projects.filter((p) => p._id != id));
+      } catch (error) {
+        alert("Error deleting project");
+      }
     }
-  ];
+  };
 
+  //Render
   return (
     <div className="project-container">
-      <h1>Projects</h1>
+      <h1>My Projects</h1>
+      <button
+        style={{ marginBottom: '20px', padding: '10px', 
+          background: '#28a745', color: 'white',
+          border: 'none', borderRadius: '5px'
+        }}
+        onClick={() => navigate('/projects/add')}
+      >
+        + Add New Project
+      </button>
 
       <div className="projects-grid">
         {projects.map((project) => (
-          <div key={project.id} className="project-card">
-            <a href={project.image} target="_blank" rel="noopener noreferrer">
-            <img
-              src={project.image}
-              alt={project.projectName}
-              className="project-image"
-            />
-            </a>
+          <div key={project._id} className="project-card">
             <h2 className="project-title">{project.title}</h2>
+            <small>Completed: {new Date(project.completion).toLocaleDateString()}</small>
             <p className="project-description">{project.description}</p>
+            
+            <div style={{ marginTop: '10px', display: 'flex', gap: '10px', justifyContent: 'center' }}>
+              <button onClick={() => navigate(`/projects/edit/${project._id}`)}>Edit Project</button>
+              <button onClick={() => handleDelete(project._id)} style={{ background: 'red'}}>Delete Project</button>
+            </div>
           </div>
         ))}
       </div>

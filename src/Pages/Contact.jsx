@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Pages_CSS/Contact.css"
+import api from "../services/api";
 
 export default function ContactMe() {
   const navigate = useNavigate();
@@ -9,8 +10,7 @@ export default function ContactMe() {
   const [inputs, setInputs] = useState({
     firstname: "",
     lastname: "",
-    contactNumber: "",
-    emailAddress: "",
+    email: "",
     message: "",
   });
 
@@ -19,12 +19,18 @@ export default function ContactMe() {
     setInputs((values) => ({ ...values, [name]: value }));
   };
 
-  function handleSubmit(e) {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form Data: ", inputs);
-    alert("Message Submitted! Redirecting to Home...");
-    navigate("/"); //redirect to home
-  }
+    //Send post request to backend
+    try {
+      await api.post('/contacts', inputs);
+      alert("Message Sent Successfully!");
+      navigate("/");
+    } catch (error) {
+      console.error("Error sending message: ", error);
+      alert("Failed to send message.");
+    }
+  };
 
   return (
     <form onSubmit={handleSubmit} className="contact-form">
@@ -51,21 +57,10 @@ export default function ContactMe() {
       </label>
 
       <label>
-        Contact Number: 
-        <input 
-            type="tel"
-            name="contactNumber"
-            value={inputs.contactNumber}
-            onChange={handleChange}
-            className="form-input"
-        />
-      </label>
-
-      <label>
         Email Address: 
         <input 
             type="email"
-            name="emailAddress"
+            name="email"
             value={inputs.emailAddress}
             onChange={handleChange}
             className="form-input"
