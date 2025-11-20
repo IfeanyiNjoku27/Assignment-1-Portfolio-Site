@@ -34,6 +34,11 @@ export default function Navbar() {
       <NavLink to="/contact" style={navLinkStyles}>
         Contact
       </NavLink>
+
+      <NavLink to="/admin" style={navLinkStyles}>
+        Admin
+      </NavLink>
+
       <hr />
     </nav>
   );

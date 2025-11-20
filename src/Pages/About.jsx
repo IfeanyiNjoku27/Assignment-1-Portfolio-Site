@@ -21,7 +21,7 @@ export default function About() {
 
       {/* Resume Link To View */}
       <a
-        href="public/Ifeanyi-Njoku-2.pdf"
+        href="/Ifeanyi_Njoku_2.pdf"
         target="_blank"
         rel="noreferrer noopener"
       >
