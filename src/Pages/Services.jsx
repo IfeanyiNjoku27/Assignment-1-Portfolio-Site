@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import api from "../services/api"
-import './Pages_CSS/Projects.css';
+import './Pages_CSS/Services.css';
 
 
 export default function Services() {
@@ -11,7 +11,7 @@ export default function Services() {
 
   // Fetch all services
   useEffect(() => {
-    const fetchProjects = async () => {
+    const fetchService = async () => {
       try {
         const response = await api.get('/services');
         setServices(response.data);
@@ -19,7 +19,7 @@ export default function Services() {
         console.error("Failed to fetch services", error);
       }
     };
-    fetchProjects();
+    fetchService();
   }, []);
 
   // Delete/remove a service
@@ -28,7 +28,7 @@ export default function Services() {
       
       try {
         await api.delete(`/services/${id}`);
-        setProjects(services.filter((p) => p._id != id));
+        setServices(services.filter((s) => s._id != id));
       } catch (error) {
         alert("Error deleting service");
       }
@@ -45,7 +45,7 @@ export default function Services() {
           background: '#28a745', color: 'white',
           border: 'none', borderRadius: '5px'
         }}
-        onClick={() => navigate('/services/add')}
+        onClick={() => navigate('/service/add')}
       >
         + Add New Service
       </button>
@@ -57,7 +57,7 @@ export default function Services() {
             <p className="service-description">{service.description}</p>
             
             <div style={{ marginTop: '10px', display: 'flex', gap: '10px', justifyContent: 'center' }}>
-              <button onClick={() => navigate(`/services/edit/${service._id}`)}>Edit Project</button>
+              <button onClick={() => navigate(`/service/edit/${service._id}`)}>Edit Project</button>
               <button onClick={() => handleDelete(service._id)} style={{ background: 'red'}}>Delete Service</button>
             </div>
           </div>
