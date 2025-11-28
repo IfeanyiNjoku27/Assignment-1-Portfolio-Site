@@ -1,6 +1,5 @@
-import { Link, NavLink } from "react-router-dom";
-import nav_logo from "./assets/nav_logo.jpg"
-
+import { Link, NavLink, useNavigate } from "react-router-dom";
+import nav_logo from "./assets/nav_logo.jpg";
 
 //NavLink Style
 const navLinkStyles = ({ isActive }) => ({
@@ -12,9 +11,18 @@ const navLinkStyles = ({ isActive }) => ({
 
 //Using NavBar
 export default function Navbar() {
+  const navigate = useNavigate();
+  const token = localStorage.getItem("token");
+
+  const handleSignOut = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    navigate("/signin");
+  };
+
   return (
     <nav className="navbar">
-     <img src={nav_logo} alt="logo" className="logo" />
+      <img src={nav_logo} alt="logo" className="logo" />
       <NavLink to="/" style={navLinkStyles}>
         Home
       </NavLink>{" "}
@@ -34,11 +42,28 @@ export default function Navbar() {
       <NavLink to="/contact" style={navLinkStyles}>
         Contact
       </NavLink>
-
       <NavLink to="/admin" style={navLinkStyles}>
         Admin
       </NavLink>
-
+      
+      {token ? (
+        <button
+          onClick={handleSignOut}
+          style={{
+            ...navLinkStyles,
+            background: "none",
+            border: "none",
+            cursor: "pointer",
+            fontSize: "inherit",
+          }}
+        >
+          Sign Out
+        </button>
+      ) : (
+        <NavLink to="/signin" style={navLinkStyles}>
+          Sign In
+        </NavLink>
+      )}
       <hr />
     </nav>
   );

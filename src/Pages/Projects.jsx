@@ -41,9 +41,9 @@ export default function Projects() {
       <button
         style={{ marginBottom: '20px', padding: '10px', 
           background: '#28a745', color: 'white',
-          border: 'none', borderRadius: '5px'
+          border: 'none', borderRadius: '5px', cursor: 'pointer'
         }}
-        onClick={() => navigate('/projects/add')}
+        onClick={() => navigate('/project/add')}
       >
         + Add New Project
       </button>
@@ -56,7 +56,7 @@ export default function Projects() {
             <p className="project-description">{project.description}</p>
             
             <div style={{ marginTop: '10px', display: 'flex', gap: '10px', justifyContent: 'center' }}>
-              <button onClick={() => navigate(`/projects/edit/${project._id}`)}>Edit Project</button>
+              <button onClick={() => navigate(`/project/edit/${project._id}`)}>Edit Project</button>
               <button onClick={() => handleDelete(project._id)} style={{ background: 'red'}}>Delete Project</button>
             </div>
           </div>

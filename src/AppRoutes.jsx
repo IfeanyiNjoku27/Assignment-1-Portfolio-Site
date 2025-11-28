@@ -11,13 +11,16 @@ import UserForm from "./Pages/UserForm";
 import UserList from "./Pages/UserList";
 import NotFound from "./Pages/NotFound";
 import AdminDashboard from "./Pages/AdminDashboard";
-
+import Signin from "./Pages/Signin";
+import Signup from "./Pages/Signup";
 //Routes
 export default function AppRoutes() {
   return (
     <Routes>
       {/* Public Pages Routes */}
       <Route path="/" element={<Home />} />
+      <Route path="/signin" element={<Signin />} />
+      <Route path="/signup" element={<Signup />} />
       <Route path="/about" element={<About />} />
       <Route path="/contact" element={<Contact />} />
 
