@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import api from "../services/api";
 import "./Pages_CSS/Contact.css";
+import toast from "react-hot-toast";
 
 export default function ProjectForm() {
   const navigate = useNavigate();
@@ -61,16 +62,16 @@ export default function ProjectForm() {
         //update
         await api.put(`/projects/${id}`, payload);
         // Toast notification would go here to replace alert (implementing later)
-        alert("Project Updated!");
+        toast.success("Project Updated Sucessfully!");
       } else {
         //create project
         await api.post("/projects", payload);
-        alert("Project Created!");
+        toast.success("New Project Created!");
       }
       navigate("/projects");
     } catch (error) {
       console.error(error);
-      alert("Operation failed");
+      toast.error("Operation failed");
     }
   };
 

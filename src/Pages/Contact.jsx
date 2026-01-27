@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Pages_CSS/Contact.css"
 import api from "../services/api";
+import toast from "react-hot-toast";
 
 export default function ContactMe() {
   const navigate = useNavigate();
@@ -21,14 +22,26 @@ export default function ContactMe() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Simple validation
+    if(!inputs.email || !inputs.message) {
+      toast.error("Please fill in all required fields.");
+      return;
+    }
+
+    // Loading toast
+    const loadingToast = toast.loading("Sending message...");
+
     //Send post request to backend
     try {
       await api.post('/contacts', inputs);
-      alert("Message Sent Successfully!");
+      toast.dismiss(loadingToast); // Remove loading spinner
+      toast.success("Message Sent! I'll get back to you soon.");
       navigate("/");
     } catch (error) {
+      toast.dismiss(loadingToast);
       console.error("Error sending message: ", error);
-      alert("Failed to send message.");
+      toast.error("Failed to send message.");
     }
   };
 

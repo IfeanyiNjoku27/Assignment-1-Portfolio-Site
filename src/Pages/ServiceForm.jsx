@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import api from "../services/api";
 import "./Pages_CSS/Contact.css";
+import toast from "react-hot-toast";
 
 export default function ServiceForm() {
   const navigate = useNavigate();
@@ -37,16 +38,16 @@ export default function ServiceForm() {
       if (isEditMode) {
         //update
         await api.put(`/services/${id}`, formData);
-        alert("Service Updated!");
+        toast.success("Service Updated!");
       } else {
         //create project
         await api.post("/services", formData);
-        alert("New Service Created!");
+        toast.success("New Service Created!");
       }
       navigate("/services");
     } catch (error) {
       console.error(error);
-      alert("Operation failed");
+      toast.error("Operation failed");
     }
   };
 

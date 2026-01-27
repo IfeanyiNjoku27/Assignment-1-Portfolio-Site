@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import api from "../services/api";
 import "./Pages_CSS/Contact.css" 
+import toast from "react-hot-toast";
 
 export default function Signin() {
     const navigate = useNavigate();
@@ -24,11 +25,11 @@ export default function Signin() {
             localStorage.setItem('token', response.data.token);
             localStorage.setItem('user', JSON.stringify(response.data.user));
             
-            alert("Signed in successfully!");
+            toast.success("Welcome Back!");
             navigate('/'); // Redirect to home
         } catch (error) {
             console.error("Signin error", error);
-            alert("Authentication failed. Please check your credentials.");
+            toast.error("Authentication failed. Please check your credentials.");
         }
     };
 
