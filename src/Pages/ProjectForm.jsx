@@ -130,7 +130,7 @@ export default function ProjectForm() {
         <label>
           ScreenShot / Image URL:
           <input 
-            type="url"
+            type="text"
             name="imageUrl"
             value={formData.imageUrl}
             onChange={handleChange}

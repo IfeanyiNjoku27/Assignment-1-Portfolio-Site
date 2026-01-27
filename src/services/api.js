@@ -1,7 +1,6 @@
 import axios from "axios";
 
-const API_URL =  "http://localhost:3000/api";
-//'https://assignment-2-backend-portfolio.onrender.com/api'
+const API_URL = 'https://assignment-2-backend-portfolio.onrender.com/api';
 
 const api = axios.create({
     baseURL: API_URL,

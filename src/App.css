@@ -1,35 +1,45 @@
-body {
-  background: linear-gradient(135deg, #4a4c51, #8a8c91); /* adds subtle gradient */
-  color: #f5f5f5; /* softer white for readability */
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* modern sans-serif */
-  padding: 40px;
-  text-align: center;
-  line-height: 1.6; /* easier to read text */
+/* src/App.css */
+#root {
+  width: 100%;
   margin: 0;
-  min-height: 100vh; /* ensures full viewport height */
+  padding: 0;
+  text-align: left;
+}
+
+/* Navbar Container */
+.navbar {
   display: flex;
-  flex-direction: column;
   align-items: center;
+  padding: 1rem 2rem;
+  background-color: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px); 
+  border-bottom: 1px solid #eaeaea;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  justify-content: space-between;
 }
 
 .logo {
-  /* height: 6em;
-  padding: 1.5em; */
-  will-change: filter;
-  transition: filter 300ms;
-
-  width: 40px;
-  height: auto;
-  margin-right: 1rem;
+  height: 40px;
+  width: auto;
+  border-radius: 4px; 
 }
 
-.logo:hover {
-  filter: drop-shadow(0 0 0.5em #030ff4aa);
+/* Navigation Links Group */
+.nav-links {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
 }
 
-.logo.react:hover {
-  filter: drop-shadow(0 0 0.5em #61dafbaa);
-}
-.navbar:hover {
-filter: drop-shadow(0 0 0.3em lightblue);
+/* Responsive tweak */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 1rem;
+  }
+  .nav-links {
+    gap: 0.8rem;
+    font-size: 0.9rem;
+  }
 }
