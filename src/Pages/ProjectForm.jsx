@@ -118,7 +118,7 @@ export default function ProjectForm() {
           <label style={{ flex: 1 }}>
             Live Demo / App Store URl: 
             <input 
-              type="url"
+              type="text"
               name="liveUrl"
               value={formData.liveUrl}
               onChange={handleChange}
