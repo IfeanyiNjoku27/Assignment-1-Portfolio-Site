@@ -1,10 +1,10 @@
-import { useState, useEffect } from "react"
-import { useNavigate } from "react-router-dom"
-import api from "../services/api"
-import './Pages_CSS/Projects.css';
+// src/Pages/Projects.jsx
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import api from "../services/api";
+import "./Pages_CSS/Projects.css";
 
 export default function Projects() {
-
   const [projects, setProjects] = useState([]);
   const navigate = useNavigate();
 
@@ -24,40 +24,98 @@ export default function Projects() {
   // Delete/remove a project
   const handleDelete = async (id) => {
     if (window.confirm("Are you sure you want to delete this project?")) {
-      
       try {
         await api.delete(`/projects/${id}`);
-        setProjects(projects.filter((p) => p._id != id));
+        setProjects(projects.filter((p) => p._id !== id));
       } catch (error) {
         alert("Error deleting project");
       }
     }
   };
 
-  //Render
   return (
     <div className="project-container">
       <h1>My Projects</h1>
-      <button
-        style={{ marginBottom: '20px', padding: '10px', 
-          background: '#28a745', color: 'white',
-          border: 'none', borderRadius: '5px', cursor: 'pointer'
-        }}
-        onClick={() => navigate('/project/add')}
-      >
-        + Add New Project
-      </button>
+      
+      {/* "Add Project" Button - Centered and prominent */}
+      <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '40px' }}>
+        <button
+          style={{
+            padding: '12px 24px',
+            background: '#28a745',
+            color: 'white',
+            border: 'none',
+            borderRadius: '6px',
+            fontSize: '1rem',
+            fontWeight: '600',
+            cursor: 'pointer',
+            boxShadow: '0 4px 6px rgba(0,0,0,0.1)'
+          }}
+          onClick={() => navigate('/project/add')}
+        >
+          + Add New Project
+        </button>
+      </div>
 
       <div className="projects-grid">
         {projects.map((project) => (
           <div key={project._id} className="project-card">
-            <h2 className="project-title">{project.title}</h2>
-            <small>Completed: {new Date(project.completion).toLocaleDateString()}</small>
-            <p className="project-description">{project.description}</p>
-            
-            <div style={{ marginTop: '10px', display: 'flex', gap: '10px', justifyContent: 'center' }}>
-              <button onClick={() => navigate(`/project/edit/${project._id}`)}>Edit Project</button>
-              <button onClick={() => handleDelete(project._id)} style={{ background: 'red'}}>Delete Project</button>
+            {/* 1. Project Thumbnail */}
+            <img 
+              src={project.imageUrl || "https://placehold.co/600x400?text=No+Image"} 
+              alt={project.title} 
+              className="project-image" 
+            />
+
+            <div className="project-content">
+              {/* 2. Title & Date */}
+              <h2 className="project-title">{project.title}</h2>
+              <small className="project-date">
+                Completed: {project.completion ? new Date(project.completion).toLocaleDateString() : 'Ongoing'}
+              </small>
+
+              {/* 3. Tech Stack Badges */}
+              {project.tags && project.tags.length > 0 && (
+                <div className="tech-stack">
+                  {project.tags.map((tag, index) => (
+                    <span key={index} className="tech-tag">{tag}</span>
+                  ))}
+                </div>
+              )}
+
+              {/* 4. Description */}
+              <p className="project-description">{project.description}</p>
+
+              {/* 5. Footer: Links & Admin Controls */}
+              <div className="card-footer">
+                <div className="project-links">
+                  {project.githubUrl && (
+                    <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="link-btn">
+                      View Code &rarr;
+                    </a>
+                  )}
+                  {project.liveUrl && (
+                    <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="link-btn">
+                      Live Demo &rarr;
+                    </a>
+                  )}
+                </div>
+
+                <div className="admin-controls">
+                  <button 
+                    className="btn-edit"
+                    onClick={() => navigate(`/project/edit/${project._id}`)}
+                  >
+                    Edit
+                  </button>
+                  <button 
+                    className="btn-delete"
+                    onClick={() => handleDelete(project._id)}
+                  >
+                    Delete
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         ))}
