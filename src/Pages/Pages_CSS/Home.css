@@ -11,9 +11,30 @@
 
 /* 1. Hero Section (Intro) */
 .hero-section {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
   margin-bottom: 80px;
   border-bottom: 1px solid #eaeaea;
   padding-bottom: 40px;
+}
+
+/* Profile Image Container */
+.hero-image-container {
+  flex-shrink: 0;
+}
+
+.profile-pic {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #fff; 
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+}
+
+.hero-content {
+  flex: 1;
 }
 
 .hero-title {
@@ -72,7 +93,7 @@
 
 /* 2. Featured Project Spotlight */
 .featured-section {
-  background-color: #f9f9f9; /* Subtle contrast box */
+  background-color: #f9f9f9; 
   border-radius: 16px;
   padding: 40px;
   display: flex;
@@ -122,6 +143,13 @@
 
 /* Responsive */
 @media (max-width: 768px) {
-  .hero-title { font-size: 2.5rem; }
-  .featured-section { padding: 25px; }
+  .hero-section {
+    flex-direction: column; /* Stack vertically */
+    text-align: center;
+    gap: 1.5rem;
+  }
+  
+  .cta-group {
+    justify-content: center; /* Center buttons on mobile */
+  }
 }

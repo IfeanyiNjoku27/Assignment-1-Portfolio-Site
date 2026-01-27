@@ -7,11 +7,10 @@ export default function Navbar() {
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
 
-  // New Light Theme Styles
   const navLinkStyles = ({ isActive }) => ({
-    color: isActive ? "#000000" : "#666666", // Black for active, Grey for inactive
+    color: isActive ? "#000000" : "#666666", 
     fontWeight: isActive ? "600" : "400",
-    borderBottom: isActive ? "2px solid #000" : "2px solid transparent", // Underline indicator
+    borderBottom: isActive ? "2px solid #000" : "2px solid transparent", 
     padding: "5px 0",
     transition: "color 0.2s, border-bottom 0.2s"
   });
