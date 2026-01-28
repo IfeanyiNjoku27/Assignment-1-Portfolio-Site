@@ -1,7 +1,6 @@
 # Portfolio V2 - Full Stack Engineering Showcase
 
 ![Portfolio Banner](public/portfolio-home-page.png)
-*(Note: Replace the path above with a screenshot of your new Home Page)*
 
 ## 🚀 Overview
 
