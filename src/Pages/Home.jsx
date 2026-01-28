@@ -50,9 +50,7 @@ export default function Home() {
           <h2>Portfolio Pulse</h2>
           <div className="tech-badges">
             <span className="badge">React Native and React</span>
-            <span className="badge">Kotlin</span>
-            <span className="badge">Python</span>
-            <span className="badge">Bash/Linux</span>
+            <span className="badge">TypeScript</span>
             <span className="badge">Node.js</span>
           </div>
           <p className="featured-desc">
@@ -72,7 +70,7 @@ export default function Home() {
                 prevent UI overflows
               </li>
               <li>
-                mpty State: UX friendly "Zero Data" handling to guide new users.
+                Empty State: UX friendly "Zero Data" handling to guide new users.
               </li>
               <li>Dark Mode Native: Styled for modern mobile aesthetics</li>
             </ul>
