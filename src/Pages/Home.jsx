@@ -21,8 +21,8 @@ export default function Home() {
             and scalable full-stack web systems.
           </h1>
           <p className="hero-subtitle">
-            I am currently a Software Engineering Student at Centennial College.
-            Passionate about full-stack development, DevOps, and creating
+            I am currently a Software Engineering Student at Centennial College,
+            passionate about full-stack development, DevOps, and creating
             "Vertical Slice" engineering solutions
           </p>
 

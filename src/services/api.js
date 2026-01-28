@@ -1,6 +1,8 @@
 import axios from "axios";
 
-const API_URL = 'https://assignment-2-backend-portfolio.onrender.com/api';
+const API_URL = import.meta.env.PROD
+    ? 'https://assignment-2-backend-portfolio.onrender.com/api'
+    : import.meta.env.VITE_API_URL;
 
 const api = axios.create({
     baseURL: API_URL,
